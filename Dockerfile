@@ -1,5 +1,10 @@
 FROM nixos/nix
 
+# Fix numpy / pandas installation issues
+# See https://stackoverflow.com/questions/22388519/problems-with-pip-install-numpy-runtimeerror-broken-toolchain-cannot-link-a
+RUN apk update
+RUN apk add make automake gcc g++ subversion python3-dev
+
 # Set a cache date, for easy updates
 ARG CACHE_DATE=2020-05-19
 
