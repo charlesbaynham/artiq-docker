@@ -19,11 +19,8 @@ RUN nix-channel --update
 
 # Copy nix security info and environment spec
 COPY nix.conf /root/.config/nix/nix.conf
-COPY artiq_env.nix .
-
-# Get / build all the requirements once for the image
-RUN nix-shell artiq_env.nix --command "artiq_client --version"
+COPY artiq.nix .
 
 # Install these packages into the local environment
-RUN nix-env -f artiq_env.nix  -i -A 'buildInputs'
+RUN nix-env -f artiq.nix  -i -A 'buildInputs'
 

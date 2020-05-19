@@ -1,0 +1,3 @@
+FROM charlesbaynham/artiq:basic
+
+RUN nix-env -f extras.nix  -i -A 'buildInputs'
