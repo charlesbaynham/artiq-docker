@@ -22,3 +22,5 @@ RUN nix-shell artiq_env.nix --command "artiq_client --version"
 # Install these packages into the local environment
 RUN nix-env -f artiq_env.nix  -i -A 'buildInputs'
 
+CMD [ "/bin/sh" ]
+
